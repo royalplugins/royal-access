@@ -100,13 +100,13 @@ Applied server-side via WordPress hooks — no user action needed:
 Royal Access is built by [Royal Plugins](https://royalplugins.com) — lightweight, security-first WordPress plugins built with clean code.
 
 Check out our other free plugins:
-- [GuardPress](https://wordpress.org/plugins/guardpress/) — WordPress security hardening
-- [SiteVault Lite](https://wordpress.org/plugins/sitevault-lite/) — Free WordPress backups with one-click restore
-- [RoyalComply](https://wordpress.org/plugins/royal-comply/) — Cookie compliance with real script blocking
-- [Royal Ledger](https://wordpress.org/plugins/royal-ledger/) — Track site costs and store license keys
+- [GuardPress](https://github.com/royalplugins/guardpress) — WordPress security hardening
+- [SiteVault Lite](https://wordpress.org/plugins/sitevault-backup-restore-migration/) — Free WordPress backups with one-click restore
+- [RoyalComply](https://github.com/royalplugins/royal-comply) — Cookie compliance with real script blocking
+- [Royal Ledger](https://github.com/royalplugins/royal-ledger) — Track site costs and store license keys
 - [Royal Links](https://wordpress.org/plugins/royal-links/) — Link management and tracking
-- [Royal SMTP](https://wordpress.org/plugins/royal-smtp/) — Simple, reliable SMTP email
-- [Royal MCP](https://github.com/royalplugins/royal-mcp) — AI platform integration for WordPress
+- [Royal SMTP](https://github.com/royalplugins/royal-smtp) — Simple, reliable SMTP email
+- [Royal MCP](https://wordpress.org/plugins/royal-mcp/) — AI platform integration for WordPress
 
 ## Disclaimer
 
