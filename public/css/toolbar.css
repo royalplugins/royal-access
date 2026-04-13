@@ -1,0 +1,447 @@
+/**
+ * Royal Access — Frontend Toolbar Styles
+ *
+ * All feature classes applied to <body> live here.
+ * CSS custom properties --raccess-bg, --raccess-text, --raccess-accent
+ * are set via wp_add_inline_style from PHP.
+ */
+
+/* ─── OpenDyslexic font (loaded only when feature activated) ─── */
+@font-face {
+	font-family: 'OpenDyslexic';
+	src: url('../fonts/OpenDyslexic-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* ─── Toolbar trigger button ─── */
+.raccess-toolbar {
+	position: fixed;
+	z-index: 999999;
+	bottom: 20px;
+}
+
+.raccess-pos-right {
+	right: 20px;
+}
+
+.raccess-pos-left {
+	left: 20px;
+}
+
+.raccess-toolbar-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	border: none;
+	background: #1e293b;
+	color: #f1f5f9;
+	cursor: pointer;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	padding: 0;
+	line-height: 1;
+}
+
+.raccess-toolbar-toggle:hover,
+.raccess-toolbar-toggle:focus-visible {
+	transform: scale(1.1);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.raccess-toolbar-toggle:focus-visible {
+	outline: 3px solid #3b82f6;
+	outline-offset: 3px;
+}
+
+/* Icon sizes */
+.raccess-size-small .raccess-toolbar-toggle {
+	width: 40px;
+	height: 40px;
+}
+
+.raccess-size-small .raccess-toolbar-toggle svg {
+	width: 20px;
+	height: 20px;
+}
+
+.raccess-size-large .raccess-toolbar-toggle {
+	width: 64px;
+	height: 64px;
+}
+
+.raccess-size-large .raccess-toolbar-toggle svg {
+	width: 34px;
+	height: 34px;
+}
+
+/* ─── Panel ─── */
+.raccess-toolbar-panel {
+	position: absolute;
+	bottom: 64px;
+	width: 280px;
+	max-height: 80vh;
+	overflow-y: auto;
+	background: var(--raccess-bg, #1e293b);
+	color: var(--raccess-text, #f1f5f9);
+	border-radius: 12px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.raccess-pos-right .raccess-toolbar-panel {
+	right: 0;
+}
+
+.raccess-pos-left .raccess-toolbar-panel {
+	left: 0;
+}
+
+/* Panel header */
+.raccess-panel-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.raccess-panel-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.raccess-panel-close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border: none;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	border-radius: 6px;
+	padding: 0;
+	opacity: 0.7;
+	transition: opacity 0.15s;
+}
+
+.raccess-panel-close:hover,
+.raccess-panel-close:focus-visible {
+	opacity: 1;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+/* Panel body */
+.raccess-panel-body {
+	padding: 8px;
+}
+
+/* Feature row — toggle buttons */
+.raccess-feature {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 10px 12px;
+	border: none;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	border-radius: 8px;
+	text-align: left;
+	font-size: 13px;
+	font-family: inherit;
+	transition: background 0.15s;
+}
+
+.raccess-feature:hover,
+.raccess-feature:focus-visible {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.raccess-feature:focus-visible {
+	outline: 2px solid var(--raccess-accent, #3b82f6);
+	outline-offset: -2px;
+}
+
+.raccess-feature-label {
+	flex: 1;
+}
+
+/* Active indicator dot */
+.raccess-feature-indicator {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.2);
+	flex-shrink: 0;
+	margin-left: 8px;
+	transition: background 0.15s;
+}
+
+.raccess-feature-toggle[aria-pressed="true"] .raccess-feature-indicator {
+	background: var(--raccess-accent, #3b82f6);
+	box-shadow: 0 0 6px var(--raccess-accent, #3b82f6);
+}
+
+.raccess-feature-toggle[aria-pressed="true"] {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+/* Font size controls (special — has two buttons) */
+.raccess-feature-fontsize {
+	cursor: default;
+}
+
+.raccess-feature-controls {
+	display: flex;
+	gap: 4px;
+}
+
+.raccess-feature-controls button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 28px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	border-radius: 6px;
+	font-size: 12px;
+	font-weight: 600;
+	font-family: inherit;
+	padding: 0;
+	transition: background 0.15s;
+}
+
+.raccess-feature-controls button:hover,
+.raccess-feature-controls button:focus-visible {
+	background: rgba(255, 255, 255, 0.12);
+}
+
+/* Panel footer */
+.raccess-panel-footer {
+	padding: 8px 12px 12px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.raccess-reset-btn {
+	display: block;
+	width: 100%;
+	padding: 8px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	border-radius: 8px;
+	font-size: 13px;
+	font-family: inherit;
+	text-align: center;
+	transition: background 0.15s;
+}
+
+.raccess-reset-btn:hover,
+.raccess-reset-btn:focus-visible {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+/* ───────────────────────────────────────────────
+ * Feature CSS classes applied to <body>
+ * ─────────────────────────────────────────────── */
+
+/* Font Size — 5 levels */
+body.raccess-font-1 { font-size: 90% !important; }
+body.raccess-font-2 { font-size: 110% !important; }
+body.raccess-font-3 { font-size: 125% !important; }
+body.raccess-font-4 { font-size: 150% !important; }
+body.raccess-font-5 { font-size: 175% !important; }
+
+/* High Contrast */
+body.raccess-high-contrast {
+	background: #000 !important;
+	color: #fff !important;
+}
+
+body.raccess-high-contrast *:not(.raccess-toolbar):not(.raccess-toolbar *) {
+	background-color: #000 !important;
+	color: #fff !important;
+	border-color: #fff !important;
+}
+
+body.raccess-high-contrast a:not(.raccess-toolbar a) {
+	color: #ff0 !important;
+	text-decoration: underline !important;
+}
+
+body.raccess-high-contrast img {
+	filter: contrast(1.2) !important;
+}
+
+/* Dark Mode */
+body.raccess-dark-mode {
+	background: #1a1a2e !important;
+	color: #e0e0e0 !important;
+}
+
+body.raccess-dark-mode *:not(.raccess-toolbar):not(.raccess-toolbar *) {
+	background-color: inherit !important;
+	color: inherit !important;
+}
+
+body.raccess-dark-mode a:not(.raccess-toolbar a) {
+	color: #82b1ff !important;
+}
+
+/* Dyslexia Font */
+body.raccess-dyslexia-font,
+body.raccess-dyslexia-font *:not(.raccess-toolbar):not(.raccess-toolbar *) {
+	font-family: 'OpenDyslexic', sans-serif !important;
+}
+
+/* Line Height */
+body.raccess-line-height,
+body.raccess-line-height *:not(.raccess-toolbar):not(.raccess-toolbar *) {
+	line-height: 2.0 !important;
+}
+
+/* Letter Spacing */
+body.raccess-letter-spacing,
+body.raccess-letter-spacing *:not(.raccess-toolbar):not(.raccess-toolbar *) {
+	letter-spacing: 0.12em !important;
+}
+
+/* Word Spacing */
+body.raccess-word-spacing,
+body.raccess-word-spacing *:not(.raccess-toolbar):not(.raccess-toolbar *) {
+	word-spacing: 0.16em !important;
+}
+
+/* Link Highlight */
+body.raccess-link-highlight a:not(.raccess-toolbar a) {
+	text-decoration: underline !important;
+	outline: 2px solid currentColor !important;
+	outline-offset: 2px !important;
+}
+
+/* Big Cursor — preserves pointer/text/resize cursors on interactive elements */
+body.raccess-big-cursor,
+body.raccess-big-cursor * {
+	cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M4 4l14 30 4-12 12-4z' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") 4 4, crosshair !important;
+}
+
+/* Preserve semantic cursors on interactive elements */
+body.raccess-big-cursor a,
+body.raccess-big-cursor button,
+body.raccess-big-cursor [role="button"],
+body.raccess-big-cursor summary,
+body.raccess-big-cursor select,
+body.raccess-big-cursor label[for] {
+	cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M16 4C10.48 4 6 8.48 6 14c0 3.04 1.36 5.76 3.5 7.59V36c0 2.21 1.79 4 4 4h5c2.21 0 4-1.79 4-4V21.59C24.64 19.76 26 17.04 26 14c0-5.52-4.48-10-10-10zm-3.5 30v-7h7v7h-7z' fill='%23000' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E") 14 4, pointer !important;
+}
+
+body.raccess-big-cursor input[type="text"],
+body.raccess-big-cursor input[type="email"],
+body.raccess-big-cursor input[type="search"],
+body.raccess-big-cursor input[type="url"],
+body.raccess-big-cursor input[type="tel"],
+body.raccess-big-cursor input[type="password"],
+body.raccess-big-cursor input[type="number"],
+body.raccess-big-cursor textarea,
+body.raccess-big-cursor [contenteditable="true"] {
+	cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M20 4h8v4h-3v32h3v4h-8v-4h3V8h-3V4z' fill='%23000' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E") 24 24, text !important;
+}
+
+/* Stop Animations — excludes toolbar to keep it functional */
+body.raccess-stop-animations,
+body.raccess-stop-animations *:not(.raccess-toolbar):not(.raccess-toolbar *),
+body.raccess-stop-animations *:not(.raccess-toolbar):not(.raccess-toolbar *)::before,
+body.raccess-stop-animations *:not(.raccess-toolbar):not(.raccess-toolbar *)::after {
+	animation-duration: 0.001ms !important;
+	animation-iteration-count: 1 !important;
+	transition-duration: 0.001ms !important;
+	scroll-behavior: auto !important;
+}
+
+/* Hide Images — dims content images, preserves UI/nav icons */
+body.raccess-hide-images img:not(.raccess-toolbar img):not([role="presentation"]):not([width="1"]) {
+	opacity: 0.1 !important;
+}
+
+body.raccess-hide-images svg:not(.raccess-toolbar svg):not(button svg):not(a svg):not(nav svg):not(.menu-item svg):not([role="img"]) {
+	opacity: 0.1 !important;
+}
+
+/* Preserve icons inside navigation, buttons, and interactive elements */
+body.raccess-hide-images nav img,
+body.raccess-hide-images button img,
+body.raccess-hide-images a img[width],
+body.raccess-hide-images .site-logo img,
+body.raccess-hide-images .custom-logo,
+body.raccess-hide-images .wp-block-site-logo img {
+	opacity: 0.6 !important;
+}
+
+/* Monochrome */
+body.raccess-monochrome {
+	filter: grayscale(100%) !important;
+}
+
+/* Reading Guide */
+.raccess-reading-guide {
+	position: fixed;
+	left: 0;
+	width: 100%;
+	height: 12px;
+	background: rgba(255, 255, 0, 0.3);
+	pointer-events: none;
+	z-index: 999998;
+	transition: top 0.05s linear;
+}
+
+/* Highlight Focus */
+body.raccess-highlight-focus *:focus {
+	outline: 3px solid #3b82f6 !important;
+	outline-offset: 3px !important;
+	box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.3) !important;
+}
+
+body.raccess-highlight-focus *:focus:not(:focus-visible) {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+body.raccess-highlight-focus *:focus-visible {
+	outline: 3px solid #3b82f6 !important;
+	outline-offset: 3px !important;
+	box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 480px) {
+	.raccess-toolbar-panel {
+		width: 260px;
+		max-height: 70vh;
+	}
+
+	.raccess-toolbar {
+		bottom: 12px;
+	}
+
+	.raccess-pos-right {
+		right: 12px;
+	}
+
+	.raccess-pos-left {
+		left: 12px;
+	}
+}
